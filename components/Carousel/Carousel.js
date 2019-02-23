@@ -17,12 +17,6 @@ class Carousel {
 
         this.currentIndex = 2; // set index to 2
 
-
-        this.display = this.images[this.currentIndex];// display current img
-        console.log(this.display);
-        
-        this.display.style.display = 'flex'; //display item
-
         this.leftButton = carElement.querySelector('.left-button');
 
         this.rightButton = carElement.querySelector('.right-button');
@@ -30,13 +24,13 @@ class Carousel {
         this.leftButton.addEventListener('click', () => {
           this.leftButtonClicked();
           this.currentIndex--;
-          return this.currentIndex;
+          this.displayImg(this.currentIndex);
         });
 
         this.rightButton.addEventListener('click', () => {
           this.rightButtonClicked();
           this.currentIndex++;
-          return this.currentIndex;
+          this.displayImg(this.currentIndex);
         });
 
     }
@@ -54,7 +48,13 @@ class Carousel {
       console.log(this.currentIndex);
     }
 
-    
+    displayImg(element){
+      this.currentIndex = element;
+      this.display = this.images[this.currentIndex];// display current img
+      this.display.style.display = 'flex'; //display item
+      console.log(this.display);
+    }
+
 }
 
 let carousels = document.querySelectorAll('.carousel');
